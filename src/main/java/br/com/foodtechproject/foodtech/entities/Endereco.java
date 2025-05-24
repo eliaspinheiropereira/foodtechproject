@@ -1,7 +1,11 @@
 package br.com.foodtechproject.foodtech.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "endereco")
 public class Endereco {
