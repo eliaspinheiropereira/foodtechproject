@@ -1,7 +1,9 @@
 package br.com.foodtechproject.foodtech.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -31,4 +33,15 @@ public class Endereco {
 
     @Column(name = "numero")
     private String numero;
+
+    public Endereco() {}
+
+    public Endereco(String logradouro, String bairro, String cidade, String estado, String cep, String numero) {
+        this.logradouro = logradouro;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.cep = cep;
+        this.numero = numero;
+    }
 }
