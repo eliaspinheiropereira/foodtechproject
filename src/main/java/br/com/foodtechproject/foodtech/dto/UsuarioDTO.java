@@ -1,7 +1,6 @@
 package br.com.foodtechproject.foodtech.dto;
 
 import br.com.foodtechproject.foodtech.entities.Cliente;
-import br.com.foodtechproject.foodtech.entities.Endereco;
 
 public record UsuarioDTO(String nome, String email, LoginDTO login, EnderecoDTO endereco) {
 
