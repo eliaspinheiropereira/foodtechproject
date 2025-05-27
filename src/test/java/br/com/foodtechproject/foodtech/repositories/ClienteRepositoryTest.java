@@ -12,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -90,24 +89,7 @@ class ClienteRepositoryTest {
         Page<Cliente> clientes = this.clienteRepository.findAll(peageable);
 
         for(Cliente clienteEncontrado : clientes) {
-            System.out.println(clienteEncontrado.getNome());
-            System.out.println(clienteEncontrado.getEmail());
-            System.out.println(clienteEncontrado.getDataUltimaAtualizacao());
-
-            if(clienteEncontrado.getLogin() != null) {
-                System.out.println(clienteEncontrado.getLogin().getLogin());
-                System.out.println(clienteEncontrado.getLogin().getSenha());
-            }
-
-            if(clienteEncontrado.getEndereco() != null) {
-                System.out.println(clienteEncontrado.getEndereco().getLogradouro());
-                System.out.println(clienteEncontrado.getEndereco().getBairro());
-                System.out.println(clienteEncontrado.getEndereco().getCidade());
-                System.out.println(clienteEncontrado.getEndereco().getEstado());
-                System.out.println(clienteEncontrado.getEndereco().getCep());
-                System.out.println(clienteEncontrado.getEndereco().getNumero());
-            }
-
+            System.out.println(clienteEncontrado);
             System.out.println();
             System.out.println("---");
         }

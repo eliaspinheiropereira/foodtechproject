@@ -1,7 +1,9 @@
 package br.com.foodtechproject.foodtech.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -18,4 +20,11 @@ public class Login {
 
     @Column(name = "senha")
     private String senha;
+
+    public Login(){}
+
+    public Login(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+    }
 }
