@@ -3,12 +3,11 @@ spring:
     name: foodtech
 
   datasource:
-    url: jdbc:mysql://localhost:3306/foodtechproject
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: root
-  jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+    url: jdbc:h2:mem:projectfoodtech
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console

@@ -1,9 +1,7 @@
 package br.com.foodtechproject.foodtech.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -15,16 +13,17 @@ public class Login {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column(name = "login")
-    private String login;
+    private String userName;
 
     @Column(name = "senha")
     private String senha;
 
     public Login(){}
 
-    public Login(String login, String senha) {
-        this.login = login;
+    public Login(String userName, String senha) {
+        this.userName = userName;
         this.senha = senha;
     }
 }

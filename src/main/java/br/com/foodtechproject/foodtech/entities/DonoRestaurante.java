@@ -1,6 +1,5 @@
 package br.com.foodtechproject.foodtech.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,7 +25,7 @@ public class DonoRestaurante extends Usuario{
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         return this.getNome()+", "+this.getEmail()+", "+formatter.format(this.getDataUltimaAtualizacao())+", "
-                +this.getLogin().getLogin()+", "+this.getLogin().getSenha()+", "
+                +this.getLogin().getUserName()+", "+this.getLogin().getSenha()+", "
                 +this.getEndereco().getLogradouro()+", "+this.getEndereco().getBairro()+", "+this.getEndereco().getCidade()+", "
                 +this.getEndereco().getEstado()+", "+this.getEndereco().getCep()+", "+this.getEndereco().getNumero();
     }
