@@ -9,12 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ClienteRepositoryTest {
@@ -29,7 +26,7 @@ class ClienteRepositoryTest {
         cliente.setEmail("eliaspereira@gmail.com");
 
         Login login = new Login();
-        login.setLogin("deckard");
+        login.setUserName("deckard");
         login.setSenha("12345");
 
         Endereco endereco = new Endereco();
@@ -68,7 +65,7 @@ class ClienteRepositoryTest {
             endereco.setNumero("688");
 
             Login login = new Login();
-            login.setLogin("joyceRebelde");
+            login.setUserName("joyceRebelde");
             login.setSenha("12345");
 
             clienteAtualizado.setLogin(login);

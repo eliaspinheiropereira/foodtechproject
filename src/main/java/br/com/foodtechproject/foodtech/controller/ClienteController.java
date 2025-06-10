@@ -26,46 +26,37 @@ public class ClienteController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Cliente>> pesquisarClientes(@RequestParam("page") int page, @RequestParam("size") int size){
+    public ResponseEntity<Page<Cliente>> buscarClientes(@RequestParam("page") int page, @RequestParam("size") int size){
         logger.info("GET -> /clientes");
-        var clientes = this.clienteService.pesquisarClientes(page, size);
+        var clientes = this.clienteService.buscarClientes(page, size);
         return new ResponseEntity(clientes.getContent(), HttpStatus.OK);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<ClienteDTO> pesquisarCliente(@PathVariable Long id){
+    public ResponseEntity<ClienteDTO> buscarClientePorId(@PathVariable Long id){
         logger.info("GET -> /clientes/"+id);
-        Optional<Cliente> clienteOptional = this.clienteService.pesquisarClientePorId(id);
+        var cliente = this.clienteService.buscarClientePorId(id);;
 
-        if(clienteOptional.isPresent()){
-            var cliente = clienteOptional.get();
-            ClienteDTO clienteDTO = new ClienteDTO(
-                    cliente.getId(),
-                    cliente.getNome(),
-                    cliente.getEmail(),
-                    cliente.getDataUltimaAtualizacao(),
-                    cliente.getLogin(),
-                    cliente.getEndereco()
-            );
-            return ResponseEntity.ok(clienteDTO);
+        if(cliente == null) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
+
+        return ResponseEntity.ok(cliente);
     }
 
     @PostMapping
     public ResponseEntity<Void> salvarCliente(@RequestBody UsuarioDTO usuarioDTO) {
         logger.info("POST -> /clientes");
-        var clientes = usuarioDTO.mapearCliente();
-        this.clienteService.salvarCliente(clientes);
+        this.clienteService.salvarCliente(usuarioDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> excluirCliente(@PathVariable Long id) {
         logger.info("DELETE -> /clientes/"+id);
-        Optional<Cliente> clientes = this.clienteService.pesquisarClientePorId(id);
+        var cliente = this.clienteService.buscarClientePorId(id);
 
-        if(clientes.isEmpty()){
+        if(cliente == null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
 
